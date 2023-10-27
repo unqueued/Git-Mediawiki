@@ -770,6 +770,8 @@ sub import_file_revision {
 	my $author = $commit{author};
 	my $date = $commit{date};
 
+	$author =~ s/(.*[<>])//g;
+
 	print {*STDOUT} "commit refs/mediawiki/${remotename}/master\n";
 	print {*STDOUT} "mark :${n}\n";
 	print {*STDOUT} "committer ${author} <${author}\@${wiki_name}> " . $date->epoch . " +0000\n";
